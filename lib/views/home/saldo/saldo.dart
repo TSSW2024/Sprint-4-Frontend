@@ -29,8 +29,8 @@ class SaldoWidgetState extends State<SaldoWidget> {
       child: Align(
         alignment: Alignment.center,
         child: Container(
-          width: 444,
-          height: 200, // Ajusté la altura para acomodar los botones
+          width: 450,
+          height: 159, // Ajusté la altura para acomodar los botones
           padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
             color: const Color.fromARGB(255, 17, 20, 58),
@@ -38,7 +38,6 @@ class SaldoWidgetState extends State<SaldoWidget> {
               color: Colors.black,
               width: 2,
             ),
-            borderRadius: BorderRadius.circular(20),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

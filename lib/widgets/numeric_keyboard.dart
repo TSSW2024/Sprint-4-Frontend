@@ -1,4 +1,3 @@
-// lib/widgets/numeric_keyboard.dart
 import 'package:flutter/material.dart';
 
 class NumericKeyboard extends StatelessWidget {
@@ -8,27 +7,48 @@ class NumericKeyboard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return GridView.count(
+      crossAxisCount: 3,
+      shrinkWrap: true,
+      physics: NeverScrollableScrollPhysics(),
+      padding: const EdgeInsets.all(2),
       children: [
-        _buildKeyboardRow(['1', '2', '3']),
-        _buildKeyboardRow(['4', '5', '6']),
-        _buildKeyboardRow(['7', '8', '9']),
-        _buildKeyboardRow(['Borrar', '0', 'Limpiar']),
+        _buildKeyboardButton('1'),
+        _buildKeyboardButton('2'),
+        _buildKeyboardButton('3'),
+        _buildKeyboardButton('4'),
+        _buildKeyboardButton('5'),
+        _buildKeyboardButton('6'),
+        _buildKeyboardButton('7'),
+        _buildKeyboardButton('8'),
+        _buildKeyboardButton('9'),
+        _buildKeyboardButton('Borrar'),
+        _buildKeyboardButton('0'),
+        _buildKeyboardButton('Limpiar'),
       ],
     );
   }
 
-  Widget _buildKeyboardRow(List<String> keys) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: keys.map((key) {
-        return ElevatedButton(
-          onPressed: () {
-            _onKeyPressed(key);
-          },
-          child: Text(key),
-        );
-      }).toList(),
+  Widget _buildKeyboardButton(String key) {
+    return Padding(
+      padding: const EdgeInsets.all(4.0),
+      child: ElevatedButton(
+        onPressed: () {
+          _onKeyPressed(key);
+        },
+        child: Text(key, style: TextStyle(fontSize: 18)),
+        style: ButtonStyle(
+          padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+            EdgeInsets.symmetric(
+                vertical: 2, horizontal: 2), // Ajusta el tamaño de los botones
+          ),
+          shape: MaterialStateProperty.all<OutlinedBorder>(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(4.0), // Bordes redondeados
+            ),
+          ),
+        ),
+      ),
     );
   }
 
