@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'cripto_search.dart';
 import 'seguimiento.dart';
+import 'package:ejemplo_1/views/compra/compra_view.dart';
 
 final List _monedas = [
   {
@@ -121,7 +122,7 @@ class TopTab extends StatelessWidget {
       itemCount: _monedas.length,
       itemBuilder: (context, index) {
         return Container(
-          height: 60,
+          height: 80,
           margin: const EdgeInsets.all(8),
           padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(
@@ -165,6 +166,22 @@ class TopTab extends StatelessWidget {
                     ),
                     Text(_monedas[index]["ratio"].toString()),
                   ],
+                ),
+              ),
+              Flexible(
+                flex: 1,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CompraView(
+                          monedaName: _monedas[index]["moneda"],
+                        ),
+                      ),
+                    );
+                  },
+                  child: Text("Comprar"),
                 ),
               ),
             ],
